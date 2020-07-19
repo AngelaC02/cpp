@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     double total = 0;
     double impuesto = 0.15;
     int  descuento = 0;
+    char estaExcenta;
     double  calculoDescuento = 0;
     double  calculoImpuesto = 0;
 
@@ -18,10 +19,26 @@ int main(int argc, char *argv[])
 
 	cout<< "Ingrese el descuento (0,10,15,20): ";
 	cin >> descuento;
+
+    cout<< "Es Factura excenta? s/n" <<endl;
+    cin >> estaExcenta;
+
+    
     //Proceso
-    calculoDescuento = (subtotal + descuento) / 100;
-    calculoImpuesto = (subtotal - calculoDescuento) * 0.15;
-    total = subtotal - calculoDescuento + calculoImpuesto;
+    if(estaExcenta == 's' || estaExcenta =='S')
+    {
+    calculoDescuento = (subtotal + descuento);
+    calculoImpuesto = 0 ;
+    total = calculoDescuento + calculoImpuesto;
+
+    }
+    
+    if(estaExcenta == 'n' || estaExcenta == 'N')
+    {
+    calculoDescuento = (subtotal + descuento)/100;
+    calculoImpuesto = subtotal * 0.15;
+    total = subtotal + calculoImpuesto;
+    }
 
     //Salida
 
